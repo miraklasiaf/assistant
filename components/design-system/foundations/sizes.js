@@ -37,6 +37,7 @@ const largeSizes = {
   '5xl': '64rem',
   '6xl': '72rem',
   '7xl': '80rem',
+  '8xl': '88rem',
   full: '100%',
   screen: '100vh'
 };

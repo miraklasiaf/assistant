@@ -4,7 +4,10 @@ const styles = {
   global: (props) => ({
     fontFamily: 'body',
     color: mode('gray.800', 'whiteAlpha.900')(props),
-    bg: mode('white', 'rgba(23, 25, 35, 0.8)')(props),
+    bg: mode('gray.100', 'gray.900')(props),
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     lineHeight: 'base',
     '*::placeholder': {
       color: mode('gray.400', 'whiteAlpha.400')(props)

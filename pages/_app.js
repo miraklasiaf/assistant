@@ -24,7 +24,12 @@ const GlobalStyle = ({ children }) => {
 
           #__next {
             display: flex;
+            position: relative;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 1408px;
+            max-width: 1408px;
             min-height: 100vh;
             background: ${bg};
           }
