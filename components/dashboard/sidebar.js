@@ -23,33 +23,33 @@ function LogoSection() {
   );
 }
 
-export default function Sidebar() {
+export default function Sidebar(props) {
   return (
     <Flex
       pos="absolute"
       as="aside"
-      d="column"
       align="center"
       justify="center"
       top={0}
       left={0}
-      w={64}
       h="screen"
+      bg="gray.900"
+      {...props}
     >
-      <Flex direction="column" boxSize="full" align="center" bg="gray.900">
+      <Flex direction="column" boxSize="full" align="center">
         <Flex w="full" align="center" h={16} p={4}>
           <LogoSection />
         </Flex>
         <Flex
           w="full"
-          h={['full', 'calc(100vh - 4rem)']}
+          h="calc(100vh - 4rem)"
           align="center"
           justify="center"
           p={4}
         >
-          <Flex boxSize="full" d="column" align="center" px={3}>
-            <Stack direction="column" spacing={0}>
-              <NextLink href="/" passHref>
+          <Flex boxSize="full" direction="column" align="center" pr={3} py={3}>
+            <Stack direction="column" w="full" spacing={0}>
+              <NextLink href="/dashboard" passHref>
                 <A
                   p={1}
                   color="gray.300"

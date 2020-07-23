@@ -10,3 +10,4 @@ public/sitemap.xml
 .vercel
 .env*
 .firebase
+.vercel

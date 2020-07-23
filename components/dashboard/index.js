@@ -10,7 +10,7 @@ export default function Dashboard({ children }) {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar display={['none', null, 'flex']} w={64} />
 
       <Flex
         as="main"
@@ -19,9 +19,8 @@ export default function Dashboard({ children }) {
         align="center"
         justify="center"
         top={0}
-        left={64}
+        left={[0, 64]}
         right={0}
-        zIndex="docked"
       >
         <Flex d="column" boxSize="full" align="center">
           <Header />

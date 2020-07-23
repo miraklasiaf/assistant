@@ -2,12 +2,12 @@ import React from 'react';
 import NextLink from 'next/link';
 import { useColorModeValue, Button, Flex, IconButton } from '@chakra-ui/core';
 import { SunIcon, MoonIcon } from '@chakra-ui/icons';
+import MobileNav from './mobile-nav';
 
 import useColorMode from '@utils/color-mode';
 
 export default () => {
   const { toggleColorMode } = useColorMode();
-  const bgColor = useColorModeValue('white', 'rgba(23, 25, 35, 0.8)');
   const Icon = useColorModeValue(
     <MoonIcon size="32px" />,
     <SunIcon size="32px" />
@@ -38,6 +38,7 @@ export default () => {
               icon={Icon}
               onClick={toggleColorMode}
             />
+            <MobileNav />
           </Flex>
         </Flex>
       </Flex>

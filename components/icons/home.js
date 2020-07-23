@@ -1,23 +1,18 @@
-import { useColorModeValue, Box } from '@chakra-ui/core';
+import { Box } from '@chakra-ui/core';
 
-const Home = (props) => {
-  const color = useColorModeValue('#2D3748', '#fff');
-
-  return (
-    <Box
-      as="svg"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      color={color}
-      stroke={color}
-      strokeLinecap="square"
-      fill="none"
-      {...props}
-    >
-      <path d="M3 10.182V22h18V10.182L12 2z" />
-      <path d="M9 14h6v8H9z" />
-    </Box>
-  );
-};
+const Home = (props) => (
+  <Box
+    as="svg"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    {...props}
+  >
+    <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+  </Box>
+);
 
 export default Home;
