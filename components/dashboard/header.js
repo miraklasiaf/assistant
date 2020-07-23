@@ -15,37 +15,29 @@ export default () => {
 
   return (
     <Flex
-      pos="absolute"
       as="header"
       align="center"
-      justify="center"
-      top={0}
-      left={64}
-      right={0}
       h={16}
-      px={[4, 6, null, 8]}
-      bg={bgColor}
+      px={[4, 6, 8]}
       borderBottomWidth="1px"
-      zIndex="docked"
+      boxShadow="sm"
     >
       <Flex w="full" align="center" justify="center">
-        <Flex w="full" maxW="5xl" align="center" justify="center">
-          <Flex w="full" align="center" justify="space-between">
-            <Flex align="center">
-              <NextLink href="/" passHref>
-                <Button as="a" variant="ghost" px={0} fontWeight="bold">
-                  Dumbbell
-                </Button>
-              </NextLink>
-            </Flex>
-            <Flex>
-              <IconButton
-                variant="ghost"
-                aria-label="Toggle dark mode"
-                icon={Icon}
-                onClick={toggleColorMode}
-              />
-            </Flex>
+        <Flex w="full" align="center" justify="space-between">
+          <Flex align="center">
+            <NextLink href="/" passHref>
+              <Button as="a" variant="ghost" px={0} fontWeight="bold">
+                Dumbbell
+              </Button>
+            </NextLink>
+          </Flex>
+          <Flex>
+            <IconButton
+              variant="ghost"
+              aria-label="Toggle dark mode"
+              icon={Icon}
+              onClick={toggleColorMode}
+            />
           </Flex>
         </Flex>
       </Flex>

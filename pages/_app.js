@@ -11,7 +11,7 @@ import theme from '@components/design-system';
 import { AuthProvider } from '@lib/auth';
 
 const GlobalStyle = ({ children }) => {
-  const bg = useColorModeValue('gray.50', '#171923');
+  const bg = useColorModeValue('white', 'gray.900');
 
   return (
     <>

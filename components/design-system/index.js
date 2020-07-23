@@ -1,5 +1,6 @@
 import chakraTheme from '@chakra-ui/theme';
 import foundations from './foundations';
+
 import styles from './styles';
 
 const theme = {

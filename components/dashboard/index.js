@@ -10,8 +10,33 @@ export default function Dashboard({ children }) {
 
   return (
     <>
-      <Header />
       <Sidebar />
+
+      <Flex
+        as="main"
+        pos="absolute"
+        as="main"
+        align="center"
+        justify="center"
+        top={0}
+        left={64}
+        right={0}
+        zIndex="docked"
+      >
+        <Flex d="column" boxSize="full" align="center">
+          <Header />
+          <Flex as="section" px={[4, 6, 8]} py={4} h="calc(100vh - 4rem)">
+            <Flex
+              w="full"
+              borderWidth="4px"
+              borderStyle="dashed"
+              borderRadius="lg"
+            >
+              {children}
+            </Flex>
+          </Flex>
+        </Flex>
+      </Flex>
     </>
   );
 }

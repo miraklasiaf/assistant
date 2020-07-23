@@ -1,66 +1,77 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { useColorModeValue, Button, Flex, IconButton } from '@chakra-ui/core';
-import { SunIcon, MoonIcon } from '@chakra-ui/icons';
+import { Stack, Flex, Image, Link as A } from '@chakra-ui/core';
 
-import useColorMode from '@utils/color-mode';
+function LogoSection() {
+  return (
+    <Flex boxSize="full" align="center">
+      <Image
+        src="static/logos/workflow-mark-on-dark.svg"
+        alt="Logo mark"
+        h={8}
+        w="auto"
+        display={{ base: 'block', lg: 'none' }}
+      />
+      <Image
+        src="static/logos/workflow-logo-on-dark.svg"
+        alt="Logo dark"
+        h={8}
+        w="auto"
+        display={{ base: 'none', lg: 'block' }}
+      />
+    </Flex>
+  );
+}
 
 export default function Sidebar() {
-  const { toggleColorMode } = useColorMode();
-  const bgColor = useColorModeValue('white', 'rgba(23, 25, 35, 0.8)');
-  const Icon = useColorModeValue(
-    <MoonIcon size="32px" />,
-    <SunIcon size="32px" />
-  );
-
   return (
     <Flex
       pos="absolute"
-      as="header"
-      direction="column"
+      as="aside"
+      d="column"
       align="center"
       justify="center"
       top={0}
       left={0}
       w={64}
       h="screen"
-      borderRightWidth="1px"
-      zIndex="docked"
     >
-      <Flex d="column" boxSize="full" align="center">
+      <Flex direction="column" boxSize="full" align="center" bg="gray.900">
         <Flex w="full" align="center" h={16} p={4}>
-          <Flex boxSize="full" align="center">
-            Logo
-          </Flex>
+          <LogoSection />
         </Flex>
         <Flex
           w="full"
-          bg="gray.400"
-          h="xl"
+          h={['full', 'calc(100vh - 4rem)']}
           align="center"
           justify="center"
           p={4}
         >
-          <Flex
-            boxSize="full"
-            d="column"
-            align="center"
-            justify="space-between"
-          >
-            <NextLink href="/" passHref>
-              <Button as="a" variant="ghost" px={0} fontWeight="bold">
-                Dumbbell
-              </Button>
-            </NextLink>
-
-            <Flex>
-              <IconButton
-                variant="ghost"
-                aria-label="Toggle dark mode"
-                icon={Icon}
-                onClick={toggleColorMode}
-              />
-            </Flex>
+          <Flex boxSize="full" d="column" align="center" px={3}>
+            <Stack direction="column" spacing={0}>
+              <NextLink href="/" passHref>
+                <A
+                  p={1}
+                  color="gray.300"
+                  fontSize="sm"
+                  fontWeight="medium"
+                  borderRadius="md"
+                >
+                  <Flex>Home</Flex>
+                </A>
+              </NextLink>
+              <NextLink href="/" passHref>
+                <A
+                  p={1}
+                  color="gray.300"
+                  fontSize="sm"
+                  fontWeight="medium"
+                  borderRadius="md"
+                >
+                  <Flex>Dumbbell</Flex>
+                </A>
+              </NextLink>
+            </Stack>
           </Flex>
         </Flex>
       </Flex>
