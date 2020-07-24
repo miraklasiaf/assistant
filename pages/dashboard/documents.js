@@ -1,7 +1,7 @@
 import { Dashboard } from '@components/dashboard';
 
 const DashboardPage = () => {
-  return <Dashboard>tes</Dashboard>;
+  return <Dashboard>Documents</Dashboard>;
 };
 
 export default DashboardPage;
