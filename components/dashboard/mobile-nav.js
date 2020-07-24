@@ -19,7 +19,7 @@ export default function MobileNav() {
       <IconButton
         aria-label="Navigation Menu"
         variant="ghost"
-        display={['flex', 'none']}
+        display={['flex', null, 'none']}
         icon={<Menu h={5} />}
         onClick={onToggle}
         ref={btnRef}
