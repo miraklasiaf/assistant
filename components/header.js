@@ -1,17 +1,10 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { useColorModeValue, Button, Flex, IconButton } from '@chakra-ui/core';
-import { SunIcon, MoonIcon } from '@chakra-ui/icons';
-
-import useColorMode from '@utils/color-mode';
+import { useColorModeValue, Button, Flex } from '@chakra-ui/core';
+import ThemeToggle from './theme-toggle';
 
 export default () => {
-  const { toggleColorMode } = useColorMode();
   const bgColor = useColorModeValue('white', 'rgba(23, 25, 35, 0.8)');
-  const Icon = useColorModeValue(
-    <MoonIcon size="32px" />,
-    <SunIcon size="32px" />
-  );
 
   return (
     <Flex
@@ -25,7 +18,6 @@ export default () => {
       px={[4, 6, null, 8]}
       bg={bgColor}
       borderBottomWidth="1px"
-      zIndex="docked"
     >
       <Flex w="full" align="center" justify="center">
         <Flex w="full" maxW="5xl" align="center" justify="center">
@@ -38,12 +30,7 @@ export default () => {
               </NextLink>
             </Flex>
             <Flex>
-              <IconButton
-                variant="ghost"
-                aria-label="Toggle dark mode"
-                icon={Icon}
-                onClick={toggleColorMode}
-              />
+              <ThemeToggle />
             </Flex>
           </Flex>
         </Flex>
