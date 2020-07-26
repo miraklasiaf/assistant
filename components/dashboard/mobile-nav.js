@@ -31,8 +31,8 @@ export default function MobileNav() {
         finalFocusRef={btnRef}
         placement="left"
       >
-        <DrawerOverlay />
-        <DrawerContent>
+        <DrawerOverlay zIndex="overlay" />
+        <DrawerContent zIndex="drawer">
           <DrawerBody p={0}>
             <Sidebar w="full" />
           </DrawerBody>

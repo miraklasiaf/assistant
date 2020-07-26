@@ -5,7 +5,7 @@ import Header from './header';
 import Footer from './footer';
 
 const Container = ({ children }) => {
-  const bgColor = useColorModeValue('white', 'rgba(23, 25, 35, 0.8)');
+  const bgColor = useColorModeValue('white', 'gray.900');
   const primarytextColor = useColorModeValue('black', 'white');
 
   return (
@@ -16,21 +16,22 @@ const Container = ({ children }) => {
         as="main"
         w="full"
         justify="center"
-        align="center"
         direction="column"
-        bg={bgColor}
-        color={primarytextColor}
         px={[4, 6, null, 8]}
         mt={16}
+        h="calc(100vh - 4rem)"
+        bg={bgColor}
+        color={primarytextColor}
       >
-        <Flex w="full" align="center" justify="center" pt={[8, 10, null, 12]}>
-          <Flex
-            w="full"
-            d="column"
-            maxW="5xl"
-            align="center"
-            justify="flex-start"
-          >
+        <Flex
+          direction="column"
+          w="full"
+          h="full"
+          justify="center"
+          align="center"
+          pt={[8, 10, null, 12]}
+        >
+          <Flex direction="column" w="full" h="full" maxW="5xl">
             {children}
             <Footer />
           </Flex>

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Box, Button } from '@chakra-ui/core';
 
-import { useAuth } from '@lib/auth';
+import { useAuth } from '@context/auth';
 
-import Dashboard from '@components/dashboard';
+import { Dashboard } from '@components/dashboard';
 
 const Account = () => {
   const { user, signout } = useAuth();

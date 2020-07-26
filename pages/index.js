@@ -1,14 +1,6 @@
-import {
-  Flex,
-  Heading,
-  Text,
-  Button,
-  Stack,
-  SimpleGrid,
-  Box
-} from '@chakra-ui/core';
+import { Flex, Heading, Text, Button, Stack } from '@chakra-ui/core';
 import Container from '@components/container';
-import { useAuth } from '@lib/auth';
+import { useAuth } from '@context/auth';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 
 export default function Index() {

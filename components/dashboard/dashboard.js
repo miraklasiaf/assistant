@@ -1,6 +1,6 @@
 import React from 'react';
-import { Flex, useColorModeValue } from '@chakra-ui/core';
-import { useAuth } from '@lib/auth';
+import { Flex, useColorModeValue, Box } from '@chakra-ui/core';
+import { useAuth } from '@context/auth';
 
 import Header from './header';
 import Sidebar from './sidebar';
@@ -11,29 +11,21 @@ export default function Dashboard({ children }) {
 
   return (
     <>
+      <Header />
       <Sidebar display={['none', null, 'flex']} w={64} />
 
-      <Flex
-        as="main"
-        pos="absolute"
-        align="center"
-        top={0}
-        left={[0, 0, 64]}
-        right={0}
-        bg={bgColor}
-      >
+      <Flex as="main" ml={[0, 0, 64]} bg={bgColor}>
         <Flex direction="column" w="full">
-          <Header />
-          <Flex as="section" px={[4, 6, 8]} py={4} h="calc(100vh - 4rem)">
-            <Flex
-              w="full"
-              borderWidth="4px"
-              borderStyle="dashed"
-              borderRadius="lg"
-            >
-              {children}
-            </Flex>
-          </Flex>
+          <Box
+            w="full"
+            as="section"
+            px={[4, 6, 8]}
+            py={4}
+            mt={16}
+            h="calc(100vh - 4rem)"
+          >
+            {children}
+          </Box>
         </Flex>
       </Flex>
     </>

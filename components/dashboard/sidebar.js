@@ -16,7 +16,9 @@ import {
   Inbox,
   ChartSquareBar,
   LogoMark,
-  LogoOnDark
+  LogoOnDark,
+  Template,
+  ClipboardList
 } from '../icons';
 
 const SidebarLink = ({ href, children, icon }) => (
@@ -36,6 +38,9 @@ function PageLinks() {
       <SidebarLink href="/dashboard" icon={Home}>
         Dashboard
       </SidebarLink>
+      <SidebarLink href="/dashboard/workout" icon={ClipboardList}>
+        Workout
+      </SidebarLink>
       <SidebarLink href="/dashboard/team" icon={UserGroup}>
         Team
       </SidebarLink>
@@ -51,6 +56,9 @@ function PageLinks() {
       <SidebarLink href="/dashboard/reports" icon={ChartSquareBar}>
         Reports
       </SidebarLink>
+      <SidebarLink href="/dashboard/templates" icon={Template}>
+        Templates
+      </SidebarLink>
     </VStack>
   );
 }
@@ -60,8 +68,8 @@ export default function Sidebar(props) {
 
   return (
     <Flex
-      pos="absolute"
       as="aside"
+      pos="fixed"
       align="center"
       justify="center"
       top={0}
@@ -70,8 +78,8 @@ export default function Sidebar(props) {
       bg={bgColor}
       {...props}
     >
-      <Flex direction="column" boxSize="full" align="center">
-        <Flex w="full" align="center" h={16} p={3}>
+      <Flex direction="column" w="full" h="full" align="center">
+        <Flex w="full" align="center" h={16} p={3} borderBottomWidth="1px">
           <Flex boxSize="full" align="center" px={3}>
             <Flex boxSize="full" align="center">
               <Box
@@ -90,13 +98,7 @@ export default function Sidebar(props) {
             </Flex>
           </Flex>
         </Flex>
-        <Flex
-          w="full"
-          h="calc(100vh - 4rem)"
-          align="center"
-          justify="center"
-          p={3}
-        >
+        <Flex w="full" align="center" justify="center" p={3}>
           <Flex boxSize="full" direction="column" align="center">
             <PageLinks />
           </Flex>

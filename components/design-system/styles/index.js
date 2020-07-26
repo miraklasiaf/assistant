@@ -5,10 +5,8 @@ const styles = {
     fontFamily: 'body',
     color: mode('gray.900', 'whiteAlpha.900')(props),
     bg: mode('gray.200', 'gray.900')(props),
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    lineHeight: 'base',
+    lineHeight: 'normal',
+    minHeight: 'full',
     '*::placeholder': {
       color: mode('gray.400', 'whiteAlpha.400')(props)
     },

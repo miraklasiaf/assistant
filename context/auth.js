@@ -1,36 +1,62 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
-import 'firebase/auth';
-import * as firebase from 'firebase/app';
-import queryString from 'query-string';
+import React, { useState, useEffect, useContext, createContext } from 'react';
+import Router from 'next/router';
+import cookie from 'js-cookie';
 
-import prod from '../.firebase/prod.json';
+import firebase from '../lib/firebase';
+import { createUser } from '../lib/db';
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(prod);
+const authContext = createContext();
+
+export function AuthProvider({ children }) {
+  const auth = useProvideAuth();
+  return <authContext.Provider value={auth}>{children}</authContext.Provider>;
 }
 
-const AuthContext = createContext();
+export const useAuth = () => {
+  return useContext(authContext);
+};
 
-const useAuthProvider = () => {
+function useProvideAuth() {
   const [user, setUser] = useState(null);
 
-  const signin = (email, password) => {
+  const handleUser = (rawUser) => {
+    if (rawUser) {
+      const user = formatUser(rawUser);
+      const { token, ...userWithoutToken } = user;
+
+      createUser(user.uid, userWithoutToken);
+      setUser(user);
+
+      cookie.set('dumbbell-auth', true, {
+        expires: 1
+      });
+
+      return user;
+    } else {
+      setUser(false);
+      cookie.remove('dumbbell-auth');
+
+      return false;
+    }
+  };
+
+  const signinWithGitHub = () => {
     return firebase
       .auth()
-      .signInWithEmailAndPassword(email, password)
+      .signInWithPopup(new firebase.auth.GithubAuthProvider())
       .then((response) => {
-        setUser(response.user);
-        return response.user;
+        handleUser(response.user);
+        Router.push('/dashboard');
       });
   };
 
-  const signup = (email, password) => {
+  const signinWithGoogle = () => {
     return firebase
       .auth()
-      .createUserWithEmailAndPassword(email, password)
+      .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((response) => {
-        setUser(response.user);
-        return response.user;
+        handleUser(response.user);
+        Router.push('/dashboard');
       });
   };
 
@@ -39,61 +65,32 @@ const useAuthProvider = () => {
       .auth()
       .signOut()
       .then(() => {
-        setUser(false);
-      });
-  };
-
-  const sendPasswordResetEmail = (email) => {
-    return firebase
-      .auth()
-      .sendPasswordResetEmail(email)
-      .then(() => {
-        return true;
-      });
-  };
-
-  const confirmPasswordReset = (password, code) => {
-    const resetCode = code || getFromQueryString('oobCode');
-
-    return firebase
-      .auth()
-      .confirmPasswordReset(resetCode, password)
-      .then(() => {
-        return true;
+        handleUser(false);
+        Router.push('/');
       });
   };
 
   useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(false);
-      }
-    });
+    const unsubscribe = firebase.auth().onAuthStateChanged(handleUser);
 
     return () => unsubscribe();
   }, []);
 
   return {
-    userId: user && user.uid,
-    signin,
-    signup,
-    signout,
-    sendPasswordResetEmail,
-    confirmPasswordReset
+    user,
+    signinWithGitHub,
+    signinWithGoogle,
+    signout
   };
-};
+}
 
-const getFromQueryString = (key) => {
-  return queryString.parse(window.location.search)[key];
-};
-
-export const AuthProvider = ({ children }) => {
-  const auth = useAuthProvider();
-  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
-};
-
-export const useAuth = () => {
-  return useContext(AuthContext);
+const formatUser = (user) => {
+  return {
+    uid: user.uid,
+    email: user.email,
+    name: user.displayName,
+    token: user.xa,
+    provider: user.providerData[0].providerId,
+    photoUrl: user.photoURL
+  };
 };

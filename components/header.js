@@ -4,7 +4,7 @@ import { useColorModeValue, Button, Flex } from '@chakra-ui/core';
 import ThemeToggle from './theme-toggle';
 
 export default () => {
-  const bgColor = useColorModeValue('white', 'rgba(23, 25, 35, 0.8)');
+  const bgColor = useColorModeValue('white', 'gray.900');
 
   return (
     <Flex
