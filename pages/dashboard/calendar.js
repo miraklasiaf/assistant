@@ -1,7 +1,7 @@
-import { Dashboard } from '@components/dashboard';
+import { getLayout } from '@components/layout/dashboard';
 
-const DashboardPage = () => {
-  return <Dashboard>calendar</Dashboard>;
-};
+const DashboardCalendar = () => <div>Calendar</div>;
 
-export default DashboardPage;
+DashboardCalendar.getLayout = getLayout;
+
+export default DashboardCalendar;

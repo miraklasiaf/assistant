@@ -11,3 +11,4 @@ public/sitemap.xml
 .env*
 .firebase
 .vercel
+key.txt

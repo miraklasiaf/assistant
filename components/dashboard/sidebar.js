@@ -3,7 +3,11 @@ import {
   Box,
   Flex,
   Text,
-  Image,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
   VStack,
   useColorModeValue
 } from '@chakra-ui/core';
@@ -63,47 +67,55 @@ function PageLinks() {
   );
 }
 
+function SidebarContainer(props) {
+  return (
+    <Box
+      as="aside"
+      position="fixed"
+      top={0}
+      w={64}
+      insexX={0}
+      h="full"
+      {...props}
+    />
+  );
+}
+
 export default function Sidebar(props) {
   const bgColor = useColorModeValue('white', 'gray.800');
 
   return (
-    <Flex
-      as="aside"
-      pos="fixed"
-      align="center"
-      justify="center"
-      top={0}
-      left={0}
-      h="screen"
-      bg={bgColor}
-      {...props}
-    >
-      <Flex direction="column" w="full" h="full" align="center">
-        <Flex w="full" align="center" h={16} p={3} borderBottomWidth="1px">
-          <Flex boxSize="full" align="center" px={3}>
-            <Flex boxSize="full" align="center">
-              <Box
-                as={LogoMark}
-                h={8}
-                w="auto"
-                display={{ base: 'block', lg: 'none' }}
-              />
+    <SidebarContainer bg={bgColor}>
+      <Flex w="full" align="center" h={16} p={3}>
+        <Flex boxSize="full" align="center" px={3}>
+          <Flex boxSize="full" align="center">
+            <Box
+              as={LogoMark}
+              h={8}
+              w="auto"
+              display={{ base: 'block', lg: 'none' }}
+            />
 
-              <Box
-                as={LogoOnDark}
-                h={8}
-                w="auto"
-                display={{ base: 'none', lg: 'block' }}
-              />
-            </Flex>
-          </Flex>
-        </Flex>
-        <Flex w="full" align="center" justify="center" p={3}>
-          <Flex boxSize="full" direction="column" align="center">
-            <PageLinks />
+            <Box
+              as={LogoOnDark}
+              h={8}
+              w="auto"
+              display={{ base: 'none', lg: 'block' }}
+            />
           </Flex>
         </Flex>
       </Flex>
-    </Flex>
+      <VStack
+        as="nav"
+        aria-label="Main navigation"
+        position="relative"
+        h="calc(100vh - 4rem)"
+        p={3}
+        overflowY="auto"
+        {...props}
+      >
+        <PageLinks />
+      </VStack>
+    </SidebarContainer>
   );
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import NextLink from 'next/link';
 import { useColorModeValue, Button, Flex } from '@chakra-ui/core';
 import ThemeToggle from './theme-toggle';
+import { MY_APP } from '@utils/constants';
 
 export default () => {
   const bgColor = useColorModeValue('white', 'gray.900');
@@ -25,7 +26,7 @@ export default () => {
             <Flex align="center">
               <NextLink href="/" passHref>
                 <Button as="a" variant="ghost" px={0} fontWeight="bold">
-                  Dumbbell
+                  {MY_APP}
                 </Button>
               </NextLink>
             </Flex>

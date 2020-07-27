@@ -1,6 +1,7 @@
 import { FaGithub, FaTwitter } from 'react-icons/fa';
 import { MdMail } from 'react-icons/md';
 
+export const MY_APP = 'Assistant';
 export const MY_NAME = 'Faisal Karim';
 export const TWITTER_USER_NAME = 'miraklasiaf';
 export const PLATFORM_URL = 'https://dumbbell.now.sh';

@@ -1,6 +1,6 @@
-import { PLATFORM_URL } from '@utils/constants';
+import { MY_APP, PLATFORM_URL } from '@utils/constants';
 
-const title = 'Dumbbell';
+const title = MY_APP;
 const description = 'Starter kit for next.js based project';
 
 const SEO = {

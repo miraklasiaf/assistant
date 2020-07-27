@@ -1,7 +1,7 @@
-import { Dashboard } from '@components/dashboard';
+import { getLayout } from '@components/layout/dashboard';
 
-const DashboardPage = () => {
-  return <Dashboard>Reports</Dashboard>;
-};
+const DashboardReports = () => <div>Reports</div>;
 
-export default DashboardPage;
+DashboardReports.getLayout = getLayout;
+
+export default DashboardReports;
