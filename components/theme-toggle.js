@@ -11,6 +11,7 @@ export default function ThemeToggle(props) {
 
   return (
     <IconButton
+      data-testid="theme-toggle"
       variant="ghost"
       aria-label={`Toggle ${newColorMode} mode`}
       title={`Activated ${newColorMode} mode`}

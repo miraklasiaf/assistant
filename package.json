@@ -1,12 +1,13 @@
 {
-  "name": "next-kick-starter",
+  "name": "assistant",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "prettier --write '**/*.js'"
+    "lint": "prettier --write '**/*.js'",
+    "test": "jest"
   },
   "pre-commit": "lint",
   "dependencies": {
@@ -30,6 +31,11 @@
     "swr": "^0.2.3"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.1",
+    "@testing-library/react": "^10.4.7",
+    "@testing-library/user-event": "^12.0.15",
+    "babel-jest": "^26.1.0",
+    "jest": "^26.1.0",
     "prettier": "^2.0.5"
   }
 }

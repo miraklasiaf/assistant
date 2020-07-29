@@ -1,10 +1,10 @@
 import { Flex, Heading, Text, Button, Stack } from '@chakra-ui/core';
-import { useAuth } from '@context/auth';
+import { useAuth } from '../context/auth';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { getLayout } from '@components/layout/default';
 import { MY_APP } from '@utils/constants';
 
-const Index = () => {
+const IndexPage = () => {
   const auth = useAuth();
 
   return (
@@ -44,7 +44,7 @@ const Index = () => {
           w="full"
           maxW="xl"
           align="center"
-          justify="flex-start"
+          justify="center"
           mt={8}
         >
           <Button
@@ -82,6 +82,6 @@ const Index = () => {
   );
 };
 
-Index.getLayout = getLayout;
+IndexPage.getLayout = getLayout;
 
-export default Index;
+export default IndexPage;
